@@ -1,0 +1,23 @@
+{
+  "name": "wildrain/geton-rating",
+  "description": "Geton rating plugin",
+  "type": "wordpress-plugin",
+  "license": "GPLv2",
+  "authors": [
+    {
+      "name": "wildrain",
+      "email": "roman.ul.ferdosh@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "classmap": [
+      "includes"
+    ],
+    "psr-4": {
+      "GetOn\\Rating\\": "includes/"
+    },
+    "files": []
+  }
+}
