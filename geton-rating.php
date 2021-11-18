@@ -92,6 +92,7 @@ final class Geton_Rating
     {
         new Geton\Rating\Assets();
         new Geton\Rating\Ajax();
+        new Geton\Rating\Generator();
 
         if (is_admin()) {
             new Geton\Rating\Admin();
