@@ -17,21 +17,19 @@ class Generator
 
     public function register_post_type()
     {
-        // Set UI labels for Custom Post Type
         register_post_type(
-            'movies',
-            // CPT Options
-            array(
-                'labels' => array(
-                    'name' => __('Movies'),
-                    'singular_name' => __('Movie')
-                ),
-                'public' => true,
-                'has_archive' => true,
-                'rewrite' => array('slug' => 'movie'),
-                'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',),
+            'movie',
+            [
+                'labels' => [
+                    'name'          => __('Movies', 'geton-rating'),
+                    'singular_name' => __('Movie', 'geton-rating')
+                ],
+                'public'       => true,
+                'has_archive'  => true,
+                'rewrite'      => ['slug' => 'movie'],
+                'supports'     => ['title', 'editor',  'author', 'thumbnail', 'comments', 'custom-fields'],
                 'show_in_rest' => true,
-            )
+            ]
         );
     }
 }

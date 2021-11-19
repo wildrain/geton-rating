@@ -23,6 +23,11 @@ class Assets
     public function get_scripts()
     {
         return [
+            'jquery.star-rating-svg' => [
+                'src'     => GETON_RATING_ASSETS . '/js/jquery.star-rating-svg.js',
+                'version' => filemtime(GETON_RATING_PATH . '/assets/js/jquery.star-rating-svg.js'),
+                'deps'    => ['jquery']
+            ],
             'gor-script' => [
                 'src'     => GETON_RATING_ASSETS . '/js/gor-script.js',
                 'version' => filemtime(GETON_RATING_PATH . '/assets/js/gor-script.js'),
@@ -44,6 +49,10 @@ class Assets
     public function get_styles()
     {
         return [
+            'star-rating-svg' => [
+                'src'     => GETON_RATING_ASSETS . '/css/star-rating-svg.css',
+                'version' => filemtime(GETON_RATING_PATH . '/assets/css/star-rating-svg.css'),
+            ],
             'gor-style' => [
                 'src'     => GETON_RATING_ASSETS . '/css/gor-style.css',
                 'version' => filemtime(GETON_RATING_PATH . '/assets/css/gor-style.css'),
@@ -74,5 +83,9 @@ class Assets
             wp_register_style($handle, $style['src'], $deps, $version);
             wp_enqueue_style($handle);
         }
+
+        wp_localize_script('gor-rating', 'gor_data', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+        ]);
     }
 }

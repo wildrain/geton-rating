@@ -18,6 +18,8 @@
     "psr-4": {
       "GetOn\\Rating\\": "includes/"
     },
-    "files": []
+    "files": [
+      "includes/functions.php"
+    ]
   }
 }

@@ -9,5 +9,6 @@ class Admin
      */
     function __construct()
     {
+        new Admin\Handler();
     }
 }

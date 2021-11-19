@@ -15,7 +15,13 @@ class Frontend
         add_filter('single_template', [$this, 'override_single_template']);
     }
 
-    function override_single_template($single_template)
+    /**
+     * Override single template
+     *
+     * @param string $single_template
+     * @return string
+     */
+    public function override_single_template($single_template)
     {
         global $post;
 
