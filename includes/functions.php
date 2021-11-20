@@ -23,9 +23,12 @@ function geton_rating_add_comment($post_id, $payloads)
 
 function geton_rating_get_comments($post_id)
 {
-    $results = [];
     $count = 0;
     $total_rating = 0;
+    $results = [
+        'avg_rating' => 0,
+        'comments' => [],
+    ];
 
     $args = [
         'post_id' => $post_id,

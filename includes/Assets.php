@@ -85,8 +85,8 @@ class Assets
 
         wp_localize_script('gor-rating', 'gor_data', [
             'ajax_url'   => admin_url('admin-ajax.php'),
-            'comments'   => $comments['comments'],
-            'avg_rating' => $comments['avg_rating'],
+            'comments'   => isset($comments['comments']) ? $comments['comments'] : [],
+            'avg_rating' => isset($comments['avg_rating']) ? $comments['avg_rating'] : 0,
         ]);
     }
 }

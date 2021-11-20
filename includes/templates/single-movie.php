@@ -16,23 +16,29 @@ $avg_rating = $comment_details['avg_rating'];
         <span class="gor-avg-rating"></span>
 
         <div class="button-section">
-            <button class="add-review">Add Review</button>
+            <button class="add-review"><?php echo esc_html__('Add Review', 'geton-rating'); ?></button>
         </div>
     </div>
 
-
     <h3><?php echo esc_html__('Reviews', 'geton-rating'); ?></h3>
-    <ul class="gor-comments">
-        <?php foreach ($comments as $comment) : ?>
-            <li class="comment">
-                <?php if (!empty($comment['rating']) && $comment['rating'] !== '0.0') : ?>
-                    <span class="rating gor-rating-<?php echo esc_attr($comment['comment_id']); ?>"></span>
-                    <strong class="rating-count"><?php echo esc_attr($comment['rating']); ?>,</strong>
-                <?php endif; ?>
-                <span class="review"><?php echo wp_kses($comment['review'], wp_kses_allowed_html()); ?></span>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+    <?php if (count($comments)) : ?>
+        <ul class="gor-comments">
+            <?php foreach ($comments as $comment) : ?>
+                <?php
+                if (empty($comment)) {
+                    continue;
+                }
+                ?>
+                <li class="comment">
+                    <?php if (!empty($comment['rating']) && $comment['rating'] !== '0.0') : ?>
+                        <span class="rating gor-rating-<?php echo esc_attr($comment['comment_id']); ?>"></span>
+                        <strong class="rating-count"><?php echo esc_attr($comment['rating']); ?>,</strong>
+                    <?php endif; ?>
+                    <span class="review"><?php echo wp_kses($comment['review'], wp_kses_allowed_html()); ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 
     <div class="geton-rating-form" id="geton-rating-form">
         <h2><?php echo esc_html__('What\'s your rating', 'geton-rating'); ?></h2>
