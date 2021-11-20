@@ -65,6 +65,8 @@ class Assets
      */
     public function register_assets()
     {
+        global $post;
+
         $scripts = $this->get_scripts();
         $styles = $this->get_styles();
 
@@ -84,8 +86,12 @@ class Assets
             wp_enqueue_style($handle);
         }
 
+        $comments = geton_rating_get_comments($post->ID);
+
         wp_localize_script('gor-rating', 'gor_data', [
-            'ajax_url' => admin_url('admin-ajax.php'),
+            'ajax_url'   => admin_url('admin-ajax.php'),
+            'comments'   => $comments['comments'],
+            'avg_rating' => $comments['avg_rating'],
         ]);
     }
 }

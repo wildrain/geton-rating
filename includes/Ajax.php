@@ -29,8 +29,6 @@ class Ajax
             ]);
         }
 
-        _log($_POST);
-
         $payloads = [
             'review' => $_POST['review'],
             'rating' => $_POST['rating'],

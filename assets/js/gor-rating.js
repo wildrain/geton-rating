@@ -1,7 +1,9 @@
 (function ($) {
+  const ajaxUrl = gor_data.ajax_url;
+  let comments = gor_data.comments;
   setStarRating();
   function setStarRating() {
-    $('.my-rating').starRating({
+    $('.gor-rating').starRating({
       starSize: 25,
       initialRating: 0,
       disableAfterRate: false,
@@ -14,6 +16,21 @@
     });
   }
 
+  $('.gor-avg-rating').starRating({
+    readOnly: true,
+    initialRating: 3.31,
+  });
+
+  $.each(comments, function (index, comment) {
+    if (!comment.rating) {
+      return;
+    }
+    $(`.gor-rating-${comment.comment_id}`).starRating({
+      readOnly: true,
+      initialRating: `${comment.rating}`,
+    });
+  });
+
   $('#geton-rating-form form').on('submit', function (event) {
     event.preventDefault();
 
@@ -23,10 +40,6 @@
     if (rating) {
       data = `${data}&rating=${rating}`;
     }
-
-    let self = $(this);
-
-    console.log(data, 'data');
 
     $.post(gor_data.ajax_url, data, function (response) {
       console.log('response ', response);
