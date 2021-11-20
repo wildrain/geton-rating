@@ -57,7 +57,7 @@ function geton_rating_get_comments($post_id)
     }
 
     return [
-        'avg_rating' => round($total_rating / $count, 2),
+        'avg_rating' => $count ? round($total_rating / $count, 2) : 0,
         'comments'   => $results
     ];
 }
