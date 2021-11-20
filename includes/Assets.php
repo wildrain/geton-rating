@@ -70,7 +70,6 @@ class Assets
             $version = isset($script['version']) ? $script['version'] : GETON_RATING_VERSION;
 
             wp_register_script($handle, $script['src'], $deps, $version, true);
-            wp_enqueue_script($handle);
         }
 
         foreach ($styles as $handle => $style) {
@@ -78,15 +77,20 @@ class Assets
             $version = isset($style['version']) ? $style['version'] : GETON_RATING_VERSION;
 
             wp_register_style($handle, $style['src'], $deps, $version);
-            wp_enqueue_style($handle);
         }
 
-        $comments = geton_rating_get_comments($post->ID);
+        if (is_singular('movie')) {
+            wp_enqueue_script('jquery.star-rating-svg');
+            wp_enqueue_script('gor-rating');
+            wp_enqueue_style('star-rating-svg');
+            wp_enqueue_style('gor-style');
 
-        wp_localize_script('gor-rating', 'gor_data', [
-            'ajax_url'   => admin_url('admin-ajax.php'),
-            'comments'   => isset($comments['comments']) ? $comments['comments'] : [],
-            'avg_rating' => isset($comments['avg_rating']) ? $comments['avg_rating'] : 0,
-        ]);
+            $comments = geton_rating_get_comments($post->ID);
+            wp_localize_script('gor-rating', 'gor_data', [
+                'ajax_url'   => admin_url('admin-ajax.php'),
+                'comments'   => isset($comments['comments']) ? $comments['comments'] : [],
+                'avg_rating' => isset($comments['avg_rating']) ? $comments['avg_rating'] : 0,
+            ]);
+        }
     }
 }
