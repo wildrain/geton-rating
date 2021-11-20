@@ -1,6 +1,7 @@
 (function ($) {
   const ajaxUrl = gor_data.ajax_url;
   let comments = gor_data.comments;
+  let avgRating = gor_data.avg_rating;
 
   $('.gor-rating').starRating({
     starSize: 25,
@@ -16,17 +17,26 @@
 
   $('.gor-avg-rating').starRating({
     readOnly: true,
-    initialRating: 3.31,
+    initialRating: avgRating,
   });
 
   $.each(comments, function (index, comment) {
-    if (!comment.rating) {
+    if (!comment.rating || comment.rating === '0.0') {
       return;
     }
     $(`.gor-rating-${comment.comment_id}`).starRating({
       readOnly: true,
       initialRating: `${comment.rating}`,
     });
+  });
+
+  $('button.add-review').click(function () {
+    $('html,body').animate(
+      {
+        scrollTop: $('.geton-rating-form').offset().top,
+      },
+      'slow'
+    );
   });
 
   $('#geton-rating-form form').on('submit', function (event) {
@@ -39,7 +49,6 @@
     }
 
     $.post(gor_data.ajax_url, data, function (response) {
-      console.log('response ', response);
       location.reload();
     }).fail(function () {
       console.log('Something goes wrong');

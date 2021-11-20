@@ -28,11 +28,6 @@ class Assets
                 'version' => filemtime(GETON_RATING_PATH . '/assets/js/jquery.star-rating-svg.js'),
                 'deps'    => ['jquery']
             ],
-            'gor-script' => [
-                'src'     => GETON_RATING_ASSETS . '/js/gor-script.js',
-                'version' => filemtime(GETON_RATING_PATH . '/assets/js/gor-script.js'),
-                'deps'    => ['jquery']
-            ],
             'gor-rating' => [
                 'src'     => GETON_RATING_ASSETS . '/js/gor-rating.js',
                 'version' => filemtime(GETON_RATING_PATH . '/assets/js/gor-rating.js'),
