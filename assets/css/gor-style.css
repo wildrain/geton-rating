@@ -18,6 +18,7 @@
 .average-rating strong.avg-rating-count {
   padding: 10px;
   font-size: 35px;
+  font-weight: 300;
 }
 
 .gor-comments {
@@ -28,6 +29,7 @@
 .gor-comments .rating-count {
   padding: 10px;
   font-size: 20px;
+  font-weight: 500;
 }
 
 .geton-rating-form {
