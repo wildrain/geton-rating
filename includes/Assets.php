@@ -16,7 +16,7 @@ class Assets
     }
 
     /**
-     * Marlin scripts
+     * Geton rating scripts
      *
      * @return array
      */
@@ -37,7 +37,7 @@ class Assets
     }
 
     /**
-     * Marlin styles
+     * Geton rating styles
      *
      * @return array
      */

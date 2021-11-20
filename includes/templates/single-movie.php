@@ -46,7 +46,7 @@ $avg_rating = $comment_details['avg_rating'];
 
             <div class="form-row">
                 <h3><?php echo esc_html__('Review', 'geton-rating'); ?></h3>
-                <textarea name="review" id="review" placeholder="<?php echo esc_html__('Start typing...', 'geton-rating'); ?>" required></textarea>
+                <textarea name="review" id="review" placeholder="<?php echo esc_html__('Start typing...', 'geton-rating'); ?>" rows="6" cols="50" required></textarea>
             </div>
 
             <div class="form-row submit-section">

@@ -12,6 +12,7 @@ class Frontend
      */
     public function __construct()
     {
+        new Front\Handler();
         add_filter('single_template', [$this, 'override_single_template']);
     }
 
@@ -25,7 +26,7 @@ class Frontend
     {
         global $post;
 
-        $file = dirname(__FILE__) . '/templates/single-' . $post->post_type . '.php';
+        $file =  dirname(__FILE__) . '/templates/single-' . $post->post_type . '.php';
 
         if (file_exists($file)) {
             $single_template = $file;

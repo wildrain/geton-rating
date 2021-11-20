@@ -40,7 +40,7 @@ function geton_rating_get_comments($post_id)
     foreach ($comments as $comment) {
         $rating = get_comment_meta($comment->comment_ID, 'geton-rating', true);
 
-        if (!empty($rating)) {
+        if (!empty($rating) && $rating !== '0.0') {
             $total_rating += $rating;
             $count++;
         }

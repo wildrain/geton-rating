@@ -30,8 +30,8 @@ class Ajax
         }
 
         $payloads = [
-            'review' => $_POST['review'],
-            'rating' => $_POST['rating'],
+            'review' => sanitize_textarea_field($_POST['review']),
+            'rating' => sanitize_text_field($_POST['rating']),
         ];
         $comment_id = geton_rating_add_comment($_POST['post_id'], $payloads);
 

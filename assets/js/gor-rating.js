@@ -3,6 +3,31 @@
   let comments = gor_data.comments;
   let avgRating = gor_data.avg_rating;
 
+  /**
+   * loading
+   * @param string selector
+   */
+  function block(selector = '#gor-rating') {
+    $(selector).block({
+      message: null,
+      overlayCSS: {
+        background: '#fff',
+        opacity: 0.6,
+      },
+    });
+  }
+
+  /**
+   * Unloading
+   * @param string selector
+   */
+  function unblock(selector = '#gor-rating') {
+    $(selector).unblock();
+  }
+
+  /**
+   * Init input rating
+   */
   $('.gor-rating').starRating({
     starSize: 25,
     initialRating: 0,
@@ -15,11 +40,17 @@
     },
   });
 
+  /**
+   * Init avg rating
+   */
   $('.gor-avg-rating').starRating({
     readOnly: true,
     initialRating: avgRating,
   });
 
+  /**
+   * Show review rating
+   */
   $.each(comments, function (index, comment) {
     if (!comment.rating || comment.rating === '0.0') {
       return;
@@ -30,6 +61,9 @@
     });
   });
 
+  /**
+   * Move to rating form
+   */
   $('button.add-review').click(function () {
     $('html,body').animate(
       {
@@ -39,6 +73,9 @@
     );
   });
 
+  /**
+   * Submit rating
+   */
   $('#geton-rating-form form').on('submit', function (event) {
     event.preventDefault();
 
@@ -48,7 +85,10 @@
       data = `${data}&rating=${rating}`;
     }
 
-    $.post(gor_data.ajax_url, data, function (response) {
+    block('.submit-section');
+
+    $.post(ajaxUrl, data, function (response) {
+      unblock('.submit-section');
       location.reload();
     }).fail(function () {
       console.log('Something goes wrong');

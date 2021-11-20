@@ -13,7 +13,7 @@ class Handler
     }
 
     /**
-     * Disable guterberg editor for movie post
+     * Disable gutenberg editor for movie post
      *
      * @param boolean $current_status
      * @param string $post_type
