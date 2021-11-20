@@ -1,5 +1,20 @@
-/* Front-end css goes here */
+.average-rating {
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+.average-rating strong.avg-rating-count {
+  padding: 10px;
+  font-size: 35px;
+}
+
 .gor-comments {
   list-style-type: none;
   margin-left: 0px;
+}
+
+.gor-comments .rating-count {
+  padding: 10px;
+  font-size: 20px;
 }
