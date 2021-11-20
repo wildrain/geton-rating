@@ -1,7 +1,18 @@
 .average-rating {
+  display: flex;
+  align-items: center;
   padding-bottom: 20px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #f1eaea8c;
   margin-bottom: 20px;
+}
+
+.average-rating .button-section {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.average-rating .button-section .add-review {
+  margin-left: 20px;
 }
 
 .average-rating strong.avg-rating-count {
