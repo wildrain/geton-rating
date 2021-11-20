@@ -6,14 +6,16 @@ $comment_details = geton_rating_get_comments($post->ID);
 
 $comments = $comment_details['comments'];
 $avg_rating = $comment_details['avg_rating'];
-
 ?>
 <div id="gor-content" class="gor-content">
 
     <h2><?php echo get_the_title($post->ID); ?></h2>
+
     <div class="average-rating">
-        <strong class="avg-rating-count"><?php echo esc_attr($avg_rating); ?></strong>
-        <span class="gor-avg-rating"></span>
+        <?php if (!empty($avg_rating) && $avg_rating !== '0.0') : ?>
+            <strong class="avg-rating-count"><?php echo esc_attr($avg_rating); ?></strong>
+            <span class="gor-avg-rating"></span>
+        <?php endif; ?>
 
         <div class="button-section">
             <button class="add-review"><?php echo esc_html__('Add Review', 'geton-rating'); ?></button>
